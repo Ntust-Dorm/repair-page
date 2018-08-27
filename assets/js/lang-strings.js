@@ -58,6 +58,11 @@ var MLstrings = [
         繁體中文: "通報人"
     },
     {
+        English: "Status",
+        繁體中文: "狀態"
+    },
+    /* Form */
+    {
         English: "Floor",
         繁體中文: "樓層"
     },

@@ -64,15 +64,14 @@
 				<header class="major">
 					<h2 data-mlr-text data-mlr-text>Instant Preview</h2>
 					<p data-mlr-text>Notify the dorm center once a week.</p>
-					<p style="display: inline-block;" data-mlr-text>Last notifying time:</p>
-					<p style="display: inline-block;">YYYY/MM/DD HH:MM:SS</p>
-					<table>
+					<table class="align-left">
 						<thead>
 							<th data-mlr-text>Timestamp</th>
 							<th data-mlr-text>Informant</th>
 							<th data-mlr-text>Description</th>
+							<th data-mlr-text>Status</th>
 						</thead>
-						<tbody></tbody>
+						<tbody id="records"></tbody>
 					</table>
 				</header>
 				<ul class="icons major">
@@ -258,6 +257,26 @@
 				search_form.style.display = "none";
 			}
 		}
+		$("form").on('submit', function (e) {
+			e.preventDefault();
+			// Loading bar
+			// Until Return
+			// Change Form Html to OK
+			return false;
+		});
+		/* Table */
+		$.getJSON('https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec?type=table', function (data) {
+			var count = data[Object.keys(data)[0]].length;
+			var row = "<tr>"
+			for (var i = 0; i < count; i++) {
+				$.each(data, function (key, value) {
+					let cell = `<td>${value}</td>`;
+					row += cell;
+				});
+				row += "</tr>"
+			}
+			$("#records").append(row);
+		});
 	</script>
 
 </body>
