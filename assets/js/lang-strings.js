@@ -1,7 +1,7 @@
 var MLstrings = [
     {
         English: "Repair Page of 2nd Dormitory | Taiwan Tech",
-        繁體中文: "第二宿舍報修頁面 | 台科"
+        繁體中文: "第二學生宿舍報修頁面 | 台科"
     },
     {
         English: "language:",
@@ -9,7 +9,7 @@ var MLstrings = [
     },
     {
         English: "Repair Page of 2nd Dormitory",
-        繁體中文: "第二宿舍報修頁面"
+        繁體中文: "第二學生宿舍報修頁面"
     },
     {
         English: "Request",
@@ -118,7 +118,40 @@ var MLstrings = [
     },
     /* Side Bar */
     {
-        English: "Home",
-        繁體中文: "首頁"
+        English: "Dorm",
+        繁體中文: "宿舍"
+    },
+    {
+        English: "School",
+        繁體中文: "學校"
+    },
+    /* Form */
+    {
+        English: "Request Repair Form",
+        繁體中文: "報修表單"
+    },
+    {
+        English: "-- Floor --",
+        繁體中文: "-- 樓層 --"
+    },
+    {
+        English: "-- Room --",
+        繁體中文: "-- 房間 --"
+    },
+    {
+        English: "-- Bed --",
+        繁體中文: "-- 床位 --"
+    },
+    {
+        English: "Civil",
+        繁體中文: "土木"
+    },
+    {
+        English: "Plumb",
+        繁體中文: "水電"
+    },
+    {
+        English: "Air Conditioner",
+        繁體中文: "冷氣"
     },
 ];
