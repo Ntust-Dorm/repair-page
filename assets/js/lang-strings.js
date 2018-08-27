@@ -69,6 +69,10 @@ var MLstrings = [
         English: "Bed",
         繁體中文: "床號"
     },
+    {
+        English: "Description",
+        繁體中文: "描述"
+    },
     /* Map */
     {
         English: "Notice",
