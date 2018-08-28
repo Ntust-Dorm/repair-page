@@ -211,6 +211,8 @@
 			</form>
 		</div>
 	</div>
+	<!-- Loader bar -->
+	<div class="loader"></div>
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -259,9 +261,23 @@
 		}
 		$("form").on('submit', function (e) {
 			e.preventDefault();
-			// Loading bar
-			// Until Return
-			// Change Form Html to OK
+			$(".loader").show();
+			$.ajax({
+				type: "POST",
+				url: 'https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec',
+				data: $("form").serialize(),
+				success: function(r) {
+					$("#regTitle").html("Send Success!");
+					console.log(r);
+				},
+				fail: function(r) {
+					$("#regTitle").html("Send Fail!");
+					console.log(r);
+				},
+				dataType: "json"
+			}).done(function(){
+				$(".loader").hide();
+			});
 			return false;
 		});
 		/* Table */
