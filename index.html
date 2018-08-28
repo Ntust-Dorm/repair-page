@@ -2,6 +2,7 @@
 <!--
 	Spectral by HTML5 UP
 	html5up.net | @ajlkn
+	Edit by @sheiun
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html lang="en">
@@ -211,14 +212,19 @@
 			</form>
 		</div>
 	</div>
-	<!-- Loader bar -->
-	<div class="loader"></div>
+	<div class="back">
+		<div class="lds-ring">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-	 crossorigin="anonymous"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
@@ -249,9 +255,6 @@
 			option.text = i;
 			bed.appendChild(option);
 		}
-		$(function () {
-			$(document).tooltip();
-		});
 		/* Form */
 		var search_form = document.getElementById('form');
 		window.onclick = function (event) {
@@ -261,36 +264,29 @@
 		}
 		$("form").on('submit', function (e) {
 			e.preventDefault();
-			$(".loader").show();
+			$(".back").show();
 			$.ajax({
 				type: "POST",
 				url: 'https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec',
 				data: $("form").serialize(),
-				success: function(r) {
-					$("#regTitle").html("Send Success!");
-					console.log(r);
-				},
-				fail: function(r) {
-					$("#regTitle").html("Send Fail!");
-					console.log(r);
-				},
 				dataType: "json"
-			}).done(function(){
-				$(".loader").hide();
+			}).done(function (data) {
+				$("form").html(data.result);
+				$(".back").hide();
 			});
 		});
 		/* Table */
 		$.getJSON('https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec?type=table', function (data) {
 			var count = data[Object.keys(data)[0]].length;
 			var row = "<tr>"
-			for (var i = 0; i < count; i++) {
+			for (var i = count - 1; i >= 0; i--) {
 				$.each(data, function (key, value) {
-					let cell = `<td>${value}</td>`;
+					let cell = `<td>${value[i]}</td>`;
 					row += cell;
 				});
 				row += "</tr>"
 			}
-			$("#records").append(row);
+			$("#records").html(row);
 		});
 	</script>
 
