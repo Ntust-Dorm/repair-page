@@ -148,15 +148,19 @@ var MLstrings = [
         繁體中文: "-- 床位 --"
     },
     {
-        English: "Civil",
+        English: "Building & Furniture",
         繁體中文: "土木"
     },
     {
-        English: "Plumb",
+        English: "Plumbing & Electrical",
         繁體中文: "水電"
     },
     {
         English: "Air Conditioner",
         繁體中文: "冷氣"
+    },
+    {
+        English: "Others & Not Sure",
+        繁體中文: "其它 & 不確定"
     },
 ];
