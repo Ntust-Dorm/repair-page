@@ -101,8 +101,16 @@ var MLstrings = [
         繁體中文: "如何你有任何住宿上的問題，請優先聯絡樓長。"
     },
     {
-        English: "Dormitory Cadre",
-        繁體中文: "宿舍幹部"
+        English: "Dorm Manager",
+        繁體中文: "舍長"
+    },
+    {
+        English: "Dorm Vice Manager",
+        繁體中文: "副舍長"
+    },
+    {
+        English: "Resident Assistant",
+        繁體中文: "樓長"
     },
     /* Footer */
     {

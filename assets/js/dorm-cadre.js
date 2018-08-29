@@ -6,7 +6,11 @@ class Cadre {
     }
 
     toString() {
-        return '<li class="icon fa-user"><h3>' + this.name + '</h3><p><i class="icon fa-briefcase"> </i>' + this.position + '</p><p><i class="icon fa-bed"> </i>' + this.room + '</p></li>';
+        let splitter = 'Resident Assistant';
+        if (this.position.indexOf(splitter) > -1) {
+            return '<li class="icon fa-user"><h3 data-mlr-text>' + this.name + '</h3><p><i class="icon fa-briefcase"> </i><span data-mlr-text>' + splitter + '</span>' + this.position.split(splitter)[1] + '</p><p><i class="icon fa-bed"> </i>' + this.room + '</p></li>';
+        }
+        return '<li class="icon fa-user"><h3 data-mlr-text>' + this.name + '</h3><p><i class="icon fa-briefcase"> </i><span data-mlr-text>' + this.position + '</span></p><p><i class="icon fa-bed"> </i>' + this.room + '</p></li>';
     }
 }
 
