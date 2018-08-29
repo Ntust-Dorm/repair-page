@@ -138,6 +138,18 @@ var MLstrings = [
         English: "School",
         繁體中文: "學校"
     },
+    {
+        English: "Contributor",
+        繁體中文: "貢獻者"
+    },
+    {
+        English: "Front-End",
+        繁體中文: "前端"
+    },
+    {
+        English: "Back-End",
+        繁體中文: "後端"
+    },
     /* Form */
     {
         English: "Request Repair Form",
