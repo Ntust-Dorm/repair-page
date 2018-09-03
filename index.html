@@ -281,8 +281,7 @@
 			let bed = $("#bed").val();
 			let name = $("#name").val();
 			let phone = 'no';
-			let repair = encodeURI($("[name='category']:checked").val() + ' / ' + $("#description").val());
-			console.log(repair);
+			let repair = encodeURIComponent($("[name='category']:checked").val() + ' / ' + $("#description").val());
 			$.ajax({
 				type: "POST",
 				url: 'https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec',
@@ -291,11 +290,11 @@
 			}).done(function (data) {
 				if (data.result == 'success') {
 					let url = `https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform?emailAddress=${email}&entry.1417618539=${dorm}&entry.1314157787=${room}&entry.633414981=${bed}&entry.1856649519=${name}&entry.1502245082=${phone}&entry.359637456=${repair}`;
-					$("form").html('record:' + data.result + '<br>' + 'please send it by Google Form NOW! <br>' + url);
+					$("form").html('record: ' + data.result + '<br>' + `please send it by <a href="${url}" target="_blank" style="color:red;">Google Form</a> NOW!`);
 				} else {
-					$("form").html('record:' + data.result + '<br>' + 'please refill the form again or goto Google Form directly.<br>' + 'https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform');
+					let url = 'https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform';
+					$("form").html('record: ' + data.result + '<br>' + `please refill the form again or goto <a href="${url}" target="_blank" style="color:red;">Google Form</a> directly.`);
 				}
-
 				$(".back").hide();
 			});
 		});
