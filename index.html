@@ -44,8 +44,10 @@
 							<ul>
 								<li><a href="https://www.ntust.edu.tw/home.php" target="_blank" class="icon fa-graduation-cap" data-mlr-text>School</a></li>
 								<li><a href="https://dss21.ntust.edu.tw/Dorm/" target="_blank" class="icon fa-building" data-mlr-text>Dorm</a></li>
-								<li><a href="https://docs.google.com/spreadsheets/u/1/d/1RgAEnYjlW0nh5r2s-H2_OwS2Xx_pHJs4bzXL2RSDwuw/htmlview#gid=532170578" target="_blank" class="icon fa-gift">Package</a></li>
-								<li><a href="https://docs.google.com/spreadsheets/u/1/d/1RgAEnYjlW0nh5r2s-H2_OwS2Xx_pHJs4bzXL2RSDwuw/htmlview#gid=532170578" target="_blank" class="icon fa-gavel">Repair Form</a></li>
+								<li><a href="https://docs.google.com/spreadsheets/u/1/d/1RgAEnYjlW0nh5r2s-H2_OwS2Xx_pHJs4bzXL2RSDwuw/htmlview#gid=532170578"
+									 target="_blank" class="icon fa-gift">Package</a></li>
+								<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform"
+									 target="_blank" class="icon fa-gavel">Repair Form</a></li>
 							</ul>
 							<hr />
 							<i class="fa fa-gitlab"> </i><a href="https://gitlab.com/sheiun/ntust-dorm-lang" data-mlr-text>Contribute Localization</a>
@@ -287,8 +289,13 @@
 				data: $("form").serialize(),
 				dataType: "json"
 			}).done(function (data) {
-				let url = `https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform?emailAddress=${email}&entry.1417618539=${dorm}&entry.1314157787=${room}&entry.633414981=${bed}&entry.1856649519=${name}&entry.1502245082=${phone}&entry.359637456=${repair}`;
-				$("form").html('record:' + data.result + '<br>' + 'please send it by Google Form NOW! <br>' + url);
+				if (data.result == 'success') {
+					let url = `https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform?emailAddress=${email}&entry.1417618539=${dorm}&entry.1314157787=${room}&entry.633414981=${bed}&entry.1856649519=${name}&entry.1502245082=${phone}&entry.359637456=${repair}`;
+					$("form").html('record:' + data.result + '<br>' + 'please send it by Google Form NOW! <br>' + url);
+				} else {
+					$("form").html('record:' + data.result + '<br>' + 'please refill the form again or goto Google Form directly.<br>' + 'https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform');
+				}
+
 				$(".back").hide();
 			});
 		});
