@@ -232,6 +232,12 @@
 	<script src="assets/js/lang-strings.js"></script>
 	<script src="assets/js/lang-drop.js"></script>
 	<script>
+		function zeroPad(nr, base) {
+			var len = (String(base).length - String(nr).length) + 1;
+			return len > 0 ? new Array(len).join('0') + nr : nr;
+		}
+	</script>
+	<script>
 		/* Initialize floor options */
 		var floor = document.getElementById("floor");
 		for (var i = 2; i <= 15; i++) {
@@ -264,6 +270,15 @@
 		$("form").on('submit', function (e) {
 			e.preventDefault();
 			$(".back").show();
+			let email = $("#email").val();
+			let dorm = '2舍-Dorm.2&';
+			let floor = $("#floor").val();
+			let room = zeroPad($("#room").val(), 10);
+			let bed = $("#bed").val();
+			let name = $("#name").val();
+			let phone = 'no';
+			let repair = encodeURI($("[name='category']:checked").val() + ' / ' + $("#description").val());
+			console.log(repair);
 			$.ajax({
 				type: "POST",
 				url: 'https://script.google.com/macros/s/AKfycbwboI_f5gQVhfZPJgd3NQkViqYrX9TbiE538WiDfNgJWt3WYtw/exec',
@@ -272,6 +287,7 @@
 			}).done(function (data) {
 				$("form").html(data.result);
 				$(".back").hide();
+				window.open(`https://docs.google.com/forms/d/e/1FAIpQLSftf0dDG90ji0DXqs70DNo9gbxaWCZXyXa-IBEvv-5Ayz8n6A/viewform?emailAddress=${email}&entry.1417618539=${dorm}&entry.1314157787=${room}&entry.633414981=${bed}&entry.1856649519=${name}&entry.1502245082=${phone}&entry.359637456=${repair}`, '_blank');
 			});
 		});
 		/* Table */
